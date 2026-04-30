@@ -3,23 +3,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
+    /* Paletas de Cores */
     --cor-home-0: #0FB2F2;
     --cor-home-1: #3297BF;
     --cor-home-2: #41778C;
     --cor-home-3: #3B5159;
     --cor-home-4: #2C3133;
 
-    --cor-duna-0: #F2AB27;
-    --cor-duna-1: #F28C0F;
-    --cor-duna-2: #F25D07;
-    --cor-duna-3: #BF1506;
-    --cor-duna-4: #590202;
+    --cor-programacao-0: #F2AB27;
+    --cor-programacao-1: #F28C0F;
+    --cor-programacao-2: #F25D07;
+    --cor-programacao-3: #BF1506;
+    --cor-programacao-4: #590202;
 
-    --cor-perfil-0: #701646;
-    --cor-perfil-1: #A34176;
-    --cor-perfil-2: #3D0021;
-    --cor-perfil-3: #D681AE;
-    --cor-perfil-4: #FFCCE7;
+    --cor-ia-0: #701646;
+    --cor-ia-1: #A34176;
+    --cor-ia-2: #3D0021;
+    --cor-ia-3: #D681AE;
+    --cor-ia-4: #FFCCE7;
 
     --fonte-padrao: Arial, Helvetica, sans-serif;
     --fonte-destaque: 'Bebas Neue', sans-serif;
@@ -31,27 +32,19 @@
     box-sizing: border-box;
 }
 
-body{
+/* 1. ESTRUTURA PARA FOOTER NO FINAL */
+body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-body.home {
-    background-color: var(--cor-home-0);
+    min-height: 100vh; /* Ocupa no mínimo a altura da tela */
     font-family: var(--fonte-padrao);
 }
 
-body.duna {
-    background-color: var(--cor-duna-0);
-    font-family: var(--fonte-padrao);
-}
+body.home { background-color: var(--cor-home-0); }
+body.programacao { background-color: var(--cor-programacao-0); }
+body.ia { background-color: var(--cor-ia-1); }
 
-body.perfil{
-    background-color: var(--cor-perfil-1);
-    font-family: var(--fonte-padrao);
-}
-
+/* HEADER */
 header {
     background-image: linear-gradient(to bottom, var(--cor-home-1), var(--cor-home-4));
     color: white;
@@ -59,13 +52,8 @@ header {
     padding: 20px;
 }
 
-body.duna header {
-    background-image: linear-gradient(to bottom, var(--cor-duna-1), var(--cor-duna-4));
-}
-
-body.perfil header{
-    background-image: linear-gradient(to bottom, var(--cor-perfil-2), var(--cor-perfil-0));
-}
+body.programacao header { background-image: linear-gradient(to bottom, var(--cor-programacao-1), var(--cor-programacao-4)); }
+body.ia header { background-image: linear-gradient(to bottom, var(--cor-ia-2), var(--cor-ia-0)); }
 
 header h1 {
     font-family: var(--fonte-destaque);
@@ -73,109 +61,95 @@ header h1 {
     margin-bottom: 10px;
 }
 
-header p {
-    font-size: 1.2em;
-}
-
+/* 2. LAYOUT LATERAL (MENU + CONTEÚDO) */
 .container-conteudo {
     display: flex;
-    max-width: 1000px;
-    margin: auto;
+    flex: 1; /* Faz esta parte crescer e empurrar o footer */
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
     gap: 20px;
     padding: 0 20px;
-    flex: 1;
-    max-width: 100%;
-
 }
 
+/* MENU VERTICAL */
 nav {
     background-color: var(--cor-home-4);
     padding: 20px;
-    border-radius: 0 10px 10px 0px;
-    width: 200px;          
+    border-radius: 10px;
+    width: 200px;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 nav a {
     color: var(--cor-home-0);
     font-weight: bold;
     text-decoration: none;
-    margin: 5px 0;          
+    margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
-    font-family: var(--fonte-padrao);
-    text-align: left;       
-    transition: 0.3s;       
+    transition: 0.3s;
 }
+
 nav a:hover {
     background-color: var(--cor-home-2);
     color: white;
 }
 
-nav.duna{
-    background-color: var(--cor-duna-4);
-}
+/* Cores específicas do Menu */
+nav.programacao { background-color: var(--cor-programacao-4); }
+nav.programacao > a { color: var(--cor-programacao-1); }
 
-nav.duna > a{
-    color: var(--cor-duna-1);
-}
+nav.ia { background-color: var(--cor-ia-0); }
+nav.ia > a { color: var(--cor-ia-3); }
 
-nav.perfil{
-    background-color: var(--cor-perfil-0);
-}
-
-nav.perfil > a{
-    color: var(--cor-perfil-1);
-}
-
+/* CONTEÚDO PRINCIPAL */
 main {
-    flex: 1;                
+    flex: 1;
     padding: 20px;
     background-color: white;
-    border-radius: 10px;   
+    border-radius: 10px;
     box-shadow: 0 0 10px #00000033;
 }
 
 main h2 {
     font-family: var(--fonte-destaque);
     color: var(--cor-home-3);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-main p {
-    margin: 15px 0;
-    line-height: 1.6em;
-    text-align: justify;
+/* CORES DINÂMICAS PARA IA E PROGRAMAÇÃO */
+body.programacao main h2 { color: var(--cor-programacao-2); }
+body.programacao main h3 { color: var(--cor-programacao-3); }
+.programacao a h3:hover { color: var(--cor-programacao-1); }
+
+body.ia main h2 { color: var(--cor-ia-2); }
+body.ia main h3 { color: var(--cor-ia-1); } /* Cor do título na IA */
+.ia a h3:hover { color: var(--cor-ia-3); }
+
+/* ESTILO DAS MATÉRIAS (LISTAGEM) */
+.materia {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
 }
 
-body.perfil > main > h2{
-    color: var(--cor-perfil-1)
+.materia a { text-decoration: none; }
+.materia img {
+    height: 120px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-body.duna > main > h2{
-    color: var(--cor-duna-2);
-}
+.materia div { flex: 1; }
 
-.pequena {
-    display: block;
-    margin: 20px auto;
-    max-width: 200px;
-    border-radius: 8px;
-}
-
-#atores {
-    list-style: none;
-}
-
-#atores > li{
-    background-color: var(--cor-duna-0);
-}
-
-#atores strong{
-    color: var(--cor-duna-4);
-}
-
+/* FOOTER */
 footer {
     background-color: #000;
     color: white;
@@ -201,40 +175,85 @@ footer a:hover{
     transition-duration: 0.5s;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+.materia-texto {
+    line-height: 1.6;
+    color: #333;
+}
+
+.materia-texto p {
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid var(--cor-home-4);
-    font-family: var(--fonte-padrao);
+    text-align: justify;
 }
 
-input[type=submit] {
-    background-color: var(--cor-home-2);
-    color: white;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+.materia-texto h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-input[type=submit]:hover {
-    background-color: var(--cor-home-3);
+/* Linha fina abaixo do título */
+.linhafina {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px !important;
+    font-style: italic;
 }
 
-.video {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-}
-
-.video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Container da imagem principal */
+.container-grande {
     width: 100%;
-    height: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Imagem principal */
+.grande {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Imagens no meio do texto */
+.materia-texto img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto 5px auto; /* Centraliza a imagem e dá espaço */
+    border-radius: 8px;
+}
+
+/* Rodapé / Legenda das imagens */
+.rodape {
+    font-size: 0.85em !important;
+    color: #666 !important;
+    text-align: center !important;
+    margin-bottom: 25px !important;
+    font-style: italic;
+}
+
+.rodape a {
+    color: var(--cor-home-1);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.rodape a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .container-conteudo {
+        flex-direction: column; /* Menu volta para cima em celulares */
+    }
+    nav {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .materia {
+        flex-direction: column;
+        text-align: center;
+    }
 }
